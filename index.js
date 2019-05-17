@@ -2,15 +2,27 @@ const express = require('express');
 const app = new express();
 const port = process.env.PORT || 3000;
 const server = require('http').createServer(app);
+const io = require('socket.io')(server)
+const dir = __dirname;
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(dir + '/index.html');
 });
 
-// app.listen(3000, () => {
-//     console.log("server listening on port 3000")
-// })
+var address = 'שנקר 3, הרצליה';
+setTimeout(function() {
+    address = 'שמאי 4, הרצליה';
+    io.emit('change_address', {
+        address: address
+    });
+}, 5000);
+
+io.on('connection', function(socket) {
+    socket.emit('change_address', {
+        address: address
+    });
+});
 
 server.listen(port, () => {
     console.log("listening on port 3000");
