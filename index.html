@@ -46,19 +46,19 @@
 
       <div>
         <h3>הפגישה התקיימה?</h3>
-        <input name="meeting_completed" type="radio" value="completed" required>  פגישה התקיימה  <br>
-        <input name="meeting_completed" type="radio" value="not completed">  לא התקיימה  <br>
+        <input name="meeting_completed" type="radio" value="completed" required> פגישה התקיימה <br>
+        <input name="meeting_completed" type="radio" value="not completed"> לא התקיימה <br>
       </div>
 
       <div>
         <h3>נחתמה בלעדיות?</h3>
-        <input name="exclusivity_signed" type="radio" value="signed" required>  נחתמה בלעדיות  <br>
-        <input name="exclusivity_signed" type="radio" value="not signed">  לא נחתמה  <br>
+        <input name="exclusivity_signed" type="radio" value="signed" required> נחתמה בלעדיות <br>
+        <input name="exclusivity_signed" type="radio" value="not signed"> לא נחתמה <br>
       </div>
 
       <div>
         <h3>הערות:</h3>
-        <input class="commentsTextField" name="comments" type="text" placeholder="כתוב הערות במידה ויש"><br><br>
+        <input class="commentsTextField" name="comments" type="textarea" placeholder="כתוב הערות במידה ויש"><br><br>
       </div>
 
       <button id="submitButton" class="button" type="submit"> שלח טופס </button>
@@ -72,6 +72,11 @@
       location.href = "www.homehero.co.il";
     };
   </script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.15/autosize.min.js'></script>
+  <script>
+    // Automatically size all of your <textarea> elements as you type
+    autosize(document.querySelectorAll('textarea'));
+  </script>
 
   <script>
     const prefix = "https://spreadsheets.google.com/feeds/list/";
