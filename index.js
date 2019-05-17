@@ -137,7 +137,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    console.log(now.getTime());
+    console.log(dateFormat(now, "HH:MM"));
     socket.emit('change_address', {
         address: address
     });
