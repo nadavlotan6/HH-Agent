@@ -122,14 +122,6 @@ function listMajors(auth) {
     });
 }
 
-// setTimeout(function() {
-//     listMajors;
-//     io.emit('change_header', {
-//         address: address
-//     });
-// }, 100);
-
-
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -137,21 +129,12 @@ app.get('/', (req, res) => {
 });
 
 setTimeout(function () {
-    // rows.map((row) => {
-    //     address = row[9];
-    // });
     io.emit('change_address', {
         address: address
     });
 }, 400);
 
 io.on('connection', function (socket) {
-    // function intervalFunc() {
-    //     listMajors;
-    // }
-    // setInterval(intervalFunc, 150);
-
-    // let interval = setInteral(listMajors, 150);
     socket.emit('change_address', {
         address: address
     });
