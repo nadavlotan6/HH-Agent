@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<head>
+  <title>MA Seller</title>
+  <link rel="icon" href="https://www.homehero.co.il/assets/images/favicon/favicon.ico">
+</head>
+
+<body>
+  <div class=imgDiv>
+    <img class=logoImg src="https://www.homehero.co.il/assets/images/headerlogo.svg">
+    <br>
+  </div>
+  <div class=formDiv>
+    <form name="submit-to-google-sheet" align=center dir="rtl">
+      <div>
+        <h1 class=heading>Marketing Automation - Seller Form</h1> <br>
+      </div>
+
+      <div>
+        <h1>פגישת מוכר</h1>
+        <h2> ברחוב שנקר 3, הרצליה</h2>
+        <br>
+      </div>
+
+      <div>
+        <h3>התקיימה הפגישה?</h3>
+        <input name="meeting_completed" type="radio" value="completed"> פגישה התקיימה <br>
+        <input name="meeting_completed" type="radio" value="not completed"> לא התקיימה <br>
+        <br>
+      </div>
+
+      <div>
+        <h3>נחתמה בלעדיות?</h3>
+        <input name="exclusivity_signed" type="radio" value="signed"> נחתמה בלעדיות <br>
+        <input name="exclusivity_signed" type="radio" value="not signed"> לא נחתמה <br>
+        <br>
+      </div>
+
+      <div>
+        <h3>הערות:</h3>
+        <input name="comments" type="text" value="כתוב הערות במידה ויש"><br><br>
+      </div>
+
+      <button class="button" type="submit">שלח טופס</button>
+    </form>
+  </div>
+
+  <script>
+    const prefix = "https://spreadsheets.google.com/feeds/list/";
+    const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
+    const postfix = "/od6/public/values?alt=json"
+
+    const spreadsheetURL = prefix + sheetID + postfix;
+
+    $.getJSON(spreadsheetURL, function (data) {
+      console.log(data)
+    });
+  </script>
+
+  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>

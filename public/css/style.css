@@ -1,0 +1,65 @@
+.button {
+    background-color: #70CBB3;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 30px;
+  }
+
+.heading {
+    font-weight: bold
+}
+
+.imgDiv {
+    width:100%;
+    align-self: center;
+}
+
+.logoImg {
+    display: block;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 40%; 
+    margin-top:20px;
+}
+
+.formDiv {
+    width:100%; 
+    align-content: center; 
+    align-self: center; 
+    max-width: 700px; 
+    margin: auto;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    /* background-color: #d1d3d1; */
+    /* content: ''; */
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #70CBB3;
+    content: ' ';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}

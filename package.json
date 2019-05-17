@@ -1,0 +1,26 @@
+{
+  "name": "form-to-google-sheets",
+  "version": "1.0.0",
+  "description": "#### How to create an HTML form that stores the submitted form data in Google Sheets using plain 'ol JavaScript (ES6), [Google Apps Script](https://developers.google.com/apps-script/), [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadavlotan6/Marketing-Automation-Form.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadavlotan6/Marketing-Automation-Form/issues"
+  },
+  "homepage": "https://github.com/nadavlotan6/Marketing-Automation-Form#readme",
+  "dependencies": {
+    "express": "^4.17.0"
+  },
+  "engines": {
+    "node": "10.14.0"
+  }
+}
