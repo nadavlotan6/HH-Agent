@@ -16,7 +16,7 @@ setTimeout(function() {
     io.emit('change_address', {
         address: address
     });
-}, 10);
+}, 400);
 
 io.on('connection', function(socket) {
     socket.emit('change_address', {
