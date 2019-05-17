@@ -110,6 +110,7 @@ function listMajors(auth) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}`);
                     // address = row[4];
                     address = now.getTime();
+                    console.log(now.getTime());
                 }
                 //   console.log(dateFormat(now, "isoDate"));
                 //   console.log(dateFormat(now, "dd/mm/yyyy"));
