@@ -137,6 +137,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', function (socket) {
+    console.log(now.getTime());
     socket.emit('change_address', {
         address: address
     });
