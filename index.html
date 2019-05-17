@@ -6,6 +6,15 @@
 <head>
   <title>MA Seller</title>
   <link rel="icon" href="https://www.homehero.co.il/assets/images/favicon/favicon.ico">
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var socket = io();
+      socket.on('change_address', function (data) {
+        document.getElementById('address').innerHTML = data.address;
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -20,8 +29,8 @@
       </div>
 
       <div>
-        <h1>פגישת מוכר</h1>
-        <h2> ברחוב שנקר 3, הרצליה</h2>
+        <h1>פגישת מוכר ברחוב: </h1>
+        <h2 id="address">שנקר 3, הרצליה</h2>
         <br>
       </div>
 
@@ -44,9 +53,16 @@
         <input name="comments" type="text" value="כתוב הערות במידה ויש"><br><br>
       </div>
 
-      <button class="button" type="submit">שלח טופס</button>
+      <button onclick="location.href = 'www.google.com';" id="submitButton" class="button" type="submit">שלח
+        טופס</button>
     </form>
   </div>
+
+  <!-- <script type="text/javascript">
+    document.getElementById("submitButton").onclick = function () {
+      location.href = "www.homehero.co.il";
+    };
+  </script> -->
 
   <script>
     const prefix = "https://spreadsheets.google.com/feeds/list/";
