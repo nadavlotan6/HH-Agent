@@ -11,7 +11,7 @@ const {
     google
 } = require('googleapis');
 const dateFormat = require('dateformat');
-let now = new Date();
+let now = new Date() + 3*60*60*1000;
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
 let address = '';
