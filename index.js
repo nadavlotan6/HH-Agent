@@ -13,7 +13,7 @@ const dateFormat = require('dateformat');
 let now = new Date();
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
-let address = 'שנקר 3, הרצליה';
+let address = '';
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -120,10 +120,10 @@ function listMajors(auth) {
 }
 
 app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.sendFile(dir + '/index.html');
 });
-
 
 setTimeout(function () {
     // rows.map((row) => {
@@ -135,12 +135,11 @@ setTimeout(function () {
 }, 400);
 
 io.on('connection', function (socket) {
+    listMajors();
     socket.emit('change_address', {
         address: address
     });
 });
-
-
 
 server.listen(port, () => {
     console.log("listening on port 3000");
