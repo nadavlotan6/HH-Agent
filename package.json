@@ -21,6 +21,7 @@
     "dateformat": "^3.0.3",
     "express": "^4.17.0",
     "googleapis": "^39.2.0",
+    "reload": "^3.0.1",
     "socket.io": "^2.2.0"
   },
   "engines": {

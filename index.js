@@ -5,6 +5,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server)
 const dir = __dirname;
 const fs = require('fs');
+const timers = require('timers');
 const readline = require('readline');
 const {
     google
@@ -121,6 +122,14 @@ function listMajors(auth) {
     });
 }
 
+setTimeout(function() {
+    listMajors;
+    io.emit('change_header', {
+        address: address
+    });
+}, 100);
+
+
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -137,31 +146,18 @@ setTimeout(function () {
 }, 400);
 
 io.on('connection', function (socket) {
-    listMajors();
+    function intervalFunc() {
+        listMajors;
+    }
+    setInterval(intervalFunc, 150);
+
+    // let interval = setInteral(listMajors, 150);
     socket.emit('change_address', {
         address: address
     });
 });
 
 io.on('refresh_page', function (data) {
-    this.sheetsService.spreadsheets.values.get({
-        spreadsheetId,
-        range,
-    }, (err, result) => {
-        if (err) {
-            // Handle error
-            console.log(err);
-        } else {
-            const rows = result.data.values;
-            const numRows = result.values ? result.values.length : 0;
-            console.log(`${numRows} rows retrieved.`);
-            rows.map((row) => {
-                if (row[9] == dateFormat(now, "dd/mm/yyyy") && (row[10] >= dateFormat(twoHoursEarlier, "HH:MM") && row[10] <= dateFormat(twoHoursAhead, "HH:MM"))) {
-                    address = row[4];
-                }
-            });
-        }
-    });
     document.getElementById('address').value = data.address;
 });
 
