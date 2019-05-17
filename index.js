@@ -14,6 +14,8 @@ let now = new Date();
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
 let address = '';
+let spreadsheetId = '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU';
+let range = 'Format!A:K';
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -142,10 +144,23 @@ io.on('connection', function (socket) {
 });
 
 io.on('refresh_page', function (data) {
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Sheets API.
-        authorize(JSON.parse(content), listMajors);
+    this.sheetsService.spreadsheets.values.get({
+        spreadsheetId,
+        range,
+    }, (err, result) => {
+        if (err) {
+            // Handle error
+            console.log(err);
+        } else {
+            const rows = result.data.values;
+            const numRows = result.values ? result.values.length : 0;
+            console.log(`${numRows} rows retrieved.`);
+            rows.map((row) => {
+                if (row[9] == dateFormat(now, "dd/mm/yyyy") && (row[10] >= dateFormat(twoHoursEarlier, "HH:MM") && row[10] <= dateFormat(twoHoursAhead, "HH:MM"))) {
+                    address = row[4];
+                }
+            });
+        }
     });
     document.getElementById('address').value = data.address;
 });
