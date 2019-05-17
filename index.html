@@ -11,7 +11,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var socket = io();
       socket.on('change_address', function (data) {
-        document.getElementById('address').innerHTML = data.address;
+        document.getElementById('address').value = data.address;
       });
     });
   </script>
