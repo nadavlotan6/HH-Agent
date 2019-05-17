@@ -72,3 +72,9 @@ input[type='radio']:checked:after {
 h1, h2, h3 {
     color: #1D3136;
 }
+
+.commentsTextField {
+    text-align: center;
+    width: 130%;
+    border-radius: 10px;
+}
