@@ -126,23 +126,19 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.sendFile(dir + '/index.html');
-});
-
-setTimeout(function () {
-    io.emit('change_address', {
-        address: address
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Sheets API.
+        authorize(JSON.parse(content), listMajors);
     });
-}, 400);
+    res.sendFile(dir + '/index.html');
+});
 
 io.on('connection', function (socket) {
     socket.emit('change_address', {
         address: address
     });
 });
-
-// io.on('refresh_page', function (data) {
-//     document.getElementById('address').value = data.address;
-// });
 
 server.listen(port, () => {
     console.log("listening on port 3000");

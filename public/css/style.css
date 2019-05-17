@@ -68,3 +68,7 @@ input[type='radio']:checked:after {
     text-align: center;
     size: 130%;
 }
+
+h1, h2, h3 {
+    color: #1D3136;
+}
