@@ -141,6 +141,11 @@ io.on('connection', function (socket) {
     });
 });
 
+io.on('refresh_page', function (data) {
+    listMajors();
+    document.getElementById('address').value = data.address;
+  });
+
 server.listen(port, () => {
     console.log("listening on port 3000");
 });
