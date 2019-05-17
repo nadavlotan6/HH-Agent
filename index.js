@@ -122,12 +122,12 @@ function listMajors(auth) {
     });
 }
 
-setTimeout(function() {
-    listMajors;
-    io.emit('change_header', {
-        address: address
-    });
-}, 100);
+// setTimeout(function() {
+//     listMajors;
+//     io.emit('change_header', {
+//         address: address
+//     });
+// }, 100);
 
 
 app.use(express.static('public'));
@@ -146,10 +146,10 @@ setTimeout(function () {
 }, 400);
 
 io.on('connection', function (socket) {
-    function intervalFunc() {
-        listMajors;
-    }
-    setInterval(intervalFunc, 150);
+    // function intervalFunc() {
+    //     listMajors;
+    // }
+    // setInterval(intervalFunc, 150);
 
     // let interval = setInteral(listMajors, 150);
     socket.emit('change_address', {
@@ -157,9 +157,9 @@ io.on('connection', function (socket) {
     });
 });
 
-io.on('refresh_page', function (data) {
-    document.getElementById('address').value = data.address;
-});
+// io.on('refresh_page', function (data) {
+//     document.getElementById('address').value = data.address;
+// });
 
 server.listen(port, () => {
     console.log("listening on port 3000");
