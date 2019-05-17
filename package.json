@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/nadavlotan6/Marketing-Automation-Form#readme",
   "dependencies": {
+    "dateformat": "^3.0.3",
     "express": "^4.17.0",
+    "googleapis": "^39.2.0",
     "socket.io": "^2.2.0"
   },
   "engines": {

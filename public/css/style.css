@@ -9,30 +9,30 @@
     font-size: 16px;
     margin: 4px 2px;
     border-radius: 30px;
-  }
+}
 
 .heading {
     font-weight: bold
 }
 
 .imgDiv {
-    width:100%;
+    width: 100%;
     align-self: center;
 }
 
 .logoImg {
     display: block;
-    margin-left: auto; 
-    margin-right: auto; 
-    width: 35%; 
-    margin-top:20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    margin-top: 20px;
 }
 
 .formDiv {
-    width:100%; 
-    align-content: center; 
-    align-self: center; 
-    max-width: 700px; 
+    width: 100%;
+    align-content: center;
+    align-self: center;
+    max-width: 700px;
     margin: auto;
 }
 
@@ -66,4 +66,5 @@ input[type='radio']:checked:after {
 
 .addressInput {
     text-align: center;
+    size: 130%;
 }
