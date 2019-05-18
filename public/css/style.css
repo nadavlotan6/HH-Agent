@@ -66,12 +66,15 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 
-.addressInput, .commentsTextField {
+.addressInput,
+.commentsTextField {
     text-align: center;
     size: 130%;
     width: 50%;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #1D3136;
 }
