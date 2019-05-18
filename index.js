@@ -11,8 +11,8 @@ const {
     google
 } = require('googleapis');
 const dateFormat = require('dateformat');
-let serverTime = new Date().getTime()-3*60*60*1000;
-console.log(dateFormat(serverTime, "HH:MM"));
+// let serverTime = new Date().getTime()-3*60*60*1000;
+// console.log(dateFormat(serverTime, "HH:MM"));
 let now = new Date();
 now.setHours(now.getHours + 3);
 console.log(dateFormat(now, "HH:MM"));
