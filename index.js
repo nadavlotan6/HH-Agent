@@ -112,7 +112,7 @@ function listMajors(auth) {
             rows.map((row) => {
                 if (row[9] == dateFormat(now, "dd/mm/yyyy") && (row[10] >= dateFormat(twoHoursEarlier, "HH:MM") && row[10] <= dateFormat(twoHoursAhead, "HH:MM"))) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}`);
-                    address = row[4];
+                    address = row[4] + ", " + row[3];
                     // address = now.getTime();
                     // console.log(now.getTime());
                 }
