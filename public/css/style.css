@@ -71,13 +71,14 @@ input[type='radio']:checked:after {
     text-align: center;
     font-size: 14px;
     size: 130%;
-    width: 50%;
+    /* width: 50%; */
     height: 50px;
 }
 
 .addressInput {
     font-size: 18px;
     font-weight: bold;
+    width: 80%;
 }
 
 h1,
