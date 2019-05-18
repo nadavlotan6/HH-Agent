@@ -38,7 +38,7 @@
       </div> -->
 
       <div>
-        <h1>פגישת מוכר בכתובת: </h1>
+        <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
         <!-- <h2 id="address">שנקר 3, הרצליה</h2> -->
         <input class=addressInput readonly="readonly" id="address" name="address" type="text"
           value="שנקר 3, הרצליה"><br>
@@ -60,6 +60,11 @@
         <h3>הערות:</h3>
         <input id="txtInput" class="commentsTextField" name="comments" type="textarea"
           placeholder="כתוב הערות במידה ויש"><br><br>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+
+        <script>
+          $("#txtInput").autogrow();
+        </script>
       </div>
 
       <button id="submitButton" class="button" type="submit"> שלח טופס </button>
@@ -68,11 +73,6 @@
     </form>
   </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
-
-  <script>
-    $("#txtInput").autogrow();
-  </script>
 
 
 
