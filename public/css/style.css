@@ -27,6 +27,7 @@
     margin-right: auto;
     width: 40%;
     margin-top: 10px;
+    max-width:350px;
 }
 
 .formDiv {
