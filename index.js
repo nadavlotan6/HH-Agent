@@ -13,7 +13,7 @@ const {
 const dateFormat = require('dateformat');
 let serverTime = new Date().getTime()-3*60*60*1000;
 console.log(dateFormat(serverTime, "HH:MM"));
-let now = serverTime();
+let now = new Date.now();
 console.log(dateFormat(now, "HH:MM"));
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
