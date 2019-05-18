@@ -18,7 +18,7 @@
 .imgDiv {
     width: 100%;
     align-self: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 .logoImg {
@@ -35,7 +35,7 @@
     align-self: center;
     max-width: 700px;
     margin: auto;
-    padding: 25px;
+    padding: 20px;
 }
 
 input[type='radio']:after {
