@@ -173,7 +173,7 @@ app.get('/:address', (req, res) => {
     // console.log(full_address);
     
     var regex = /_/gi;
-    full_address = full_address.replace(regex, "%20");
+    full_address = full_address.replace(regex, " ");
     console.log(full_address);
     res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
