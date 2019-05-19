@@ -124,8 +124,9 @@ function listMajors(auth) {
             console.log('ID, Address:');
             rows.map((row) => {
                 // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
-                // console.log(row[10] + ", " + row[11]);
-                if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
+                // console.log(row[10] + "," + row[11]);
+                // if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
+                if (row[5] + "," + row[4] == full_address) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]}`);
                     index = row[0];
                     id = row[1];
@@ -139,7 +140,7 @@ function listMajors(auth) {
                     expert_phone = row[9];
                     meeting_date = row[10];
                     meeting_time = row[11];
-                    full_address = row[5] + ", " + row[4];
+                    // full_address = row[5] + "," + row[4];
                     sent_before = row[12];
                     sent = 'Y';
                 }
@@ -164,6 +165,19 @@ app.get('/', (req, res) => {
         // Authorize a client with credentials, then call the Google Sheets API.
         authorize(JSON.parse(content), listMajors);
     });
+    res.sendFile(dir + '/index.html');
+});
+
+app.get('/:address', (req, res) => {
+    full_address = req.params.address;
+    res.sendFile(dir + '/index.html');
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Sheets API.
+        authorize(JSON.parse(content), listMajors);
+    });
+    full_address = req.params.address;
+    console.log(full_address);
     res.sendFile(dir + '/index.html');
 });
 
