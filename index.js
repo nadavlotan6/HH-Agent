@@ -126,7 +126,7 @@ function listMajors(auth) {
                 // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
                 // console.log(row[10] + "," + row[11]);
                 // if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
-                if (row[5] + "," + row[4] == full_address) {
+                if (row[5] + ", " + row[4] == full_address) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]}`);
                     index = row[0];
                     id = row[1];
@@ -171,7 +171,7 @@ app.get('/', (req, res) => {
 app.get('/:address', (req, res) => {
     full_address = req.params.address;
     // console.log(full_address);
-    
+
     var regex = /_/gi;
     full_address = full_address.replace(regex, " ");
     console.log(full_address);
