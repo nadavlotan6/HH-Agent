@@ -172,15 +172,15 @@ app.get('/', (req, res) => {
 
 io.on('connection', function (socket) {
     // console.log(dateFormat(now, "HH:MM"));
-    if(sent_before != 'Y'){
+    if (sent_before != 'Y') {
         socket.emit('change_address', {
             full_address: full_address,
             sent: sent,
             index: index,
-            id: id, 
-            date: date, 
+            id: id,
+            date: date,
             seller: seller,
-            city: city, 
+            city: city,
             address: address,
             seller_name: seller_name,
             seller_phone: seller_phone,
