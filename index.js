@@ -122,7 +122,6 @@ function listMajors(auth) {
         const rows = res.data.values;
         if (rows.length) {
             console.log('ID, Address:');
-            // Print columns A and E, which correspond to indices 0 and 4.
             rows.map((row) => {
                 // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
                 // console.log(row[10] + ", " + row[11]);
@@ -143,8 +142,6 @@ function listMajors(auth) {
                     full_address = row[5] + ", " + row[4];
                     sent_before = row[12];
                     sent = 'Y';
-                    // address = now.getTime();
-                    // console.log(now.getTime());
                 }
                 //   console.log(dateFormat(now, "isoDate"));
                 //   console.log(dateFormat(now, "dd/mm/yyyy"));
@@ -171,7 +168,6 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    // console.log(dateFormat(now, "HH:MM"));
     if (sent_before != 'Y') {
         socket.emit('change_address', {
             full_address: full_address,
