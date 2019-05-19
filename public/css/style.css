@@ -27,7 +27,7 @@
     margin-right: auto;
     width: 40%;
     margin-top: 10px;
-    max-width:350px;
+    max-width: 350px;
 }
 
 .formDiv {
@@ -66,7 +66,8 @@ input[type='radio']:checked:after {
     visibility: visible;
     border: 2px solid white;
 }
-.meetingDiv, 
+
+.meetingDiv,
 .exclusivityDiv {
     font-size: 18px;
 }

@@ -14,8 +14,20 @@
     document.addEventListener('DOMContentLoaded', function () {
       var socket = io();
       socket.on('change_address', function (data) {
-        document.getElementById('address').value = data.address;
+        document.getElementById('full_address').value = data.full_address;
         document.getElementById('sent').value = data.sent;
+        document.getElementById('index').value = data.index;
+        document.getElementById('id').value = data.id;
+        document.getElementById('seller').value = data.seller;
+        document.getElementById('date').value = data.date;
+        document.getElementById('city').value = data.city;
+        document.getElementById('address').value = data.address;
+        document.getElementById('seller_name').value = data.seller_name;
+        document.getElementById('seller_phone').value = data.seller_phone;
+        document.getElementById('expert_name').value = data.expert_name;
+        document.getElementById('expert_phone').value = data.expert_phone;
+        document.getElementById('meeting_date').value = data.meeting_date;
+        document.getElementById('meeting_time').value = data.meeting_time;
       });
     });
   </script>
@@ -37,9 +49,21 @@
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
-        <input class=addressInput readonly="readonly" id="address" name="address" type="text"
+        <input class=addressInput readonly="readonly" id="full_address" name="address" type="text"
           value="שנקר 3, הרצליה"><br>
         <input id="sent" name="sent" type="text" hidden="hidden" value="N">
+        <input id="index" name="index" type="text" hidden="hidden" value=".">
+        <input id="id" name="id" type="text" hidden="hidden" value=".">
+        <input id="date" name="date" type="text" hidden="hidden" value=".">
+        <input id="seller" name="seller" type="text" hidden="hidden" value=".">
+        <input id="city" name="city" type="text" hidden="hidden" value=".">
+        <input id="address" name="address" type="text" hidden="hidden" value=".">
+        <input id="seller_name" name="seller_name" type="text" hidden="hidden" value=".">
+        <input id="seller_phone" name="seller_phone" type="text" hidden="hidden" value=".">
+        <input id="expert_name" name="expert_name" type="text" hidden="hidden" value=".">
+        <input id="expert_phone" name="expert_phone" type="text" hidden="hidden" value=".">
+        <input id="meeting_date" name="meeting_date" type="text" hidden="hidden" value=".">
+        <input id="meeting_time" name="meeting_time" type="text" hidden="hidden" value=".">
       </div>
 
       <div class=meetingDiv>

@@ -18,8 +18,21 @@ let now = new Date();
 // console.log(dateFormat(now, "HH:MM"));
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
-let address = '';
+let full_address = '';
 let sent = 'N';
+let index
+let id = ".";
+let date = ".";
+let seller = ".";
+let city = ".";
+let address = ".";
+let seller_name = ".";
+let seller_phone = ".";
+let expert_name = ".";
+let expert_phone = ".";
+let meeting_date = ".";
+let meeting_time = ".";
+let sent_before = "";
 let spreadsheetId = '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU';
 let range = 'Format!A:M';
 
@@ -103,7 +116,7 @@ function listMajors(auth) {
     });
     sheets.spreadsheets.values.get({
         spreadsheetId: '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU',
-        range: 'Format!A:L',
+        range: 'Format!A:M',
     }, (err, res) => {
         if (err) return console.log('The API returned an error: ' + err);
         const rows = res.data.values;
@@ -114,8 +127,21 @@ function listMajors(auth) {
                 // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
                 // console.log(row[10] + ", " + row[11]);
                 if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
-                    console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}`);
-                    address = row[5] + ", " + row[4];
+                    console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]}`);
+                    index = row[0];
+                    id = row[1];
+                    date = row[2];
+                    seller = row[3];
+                    city = row[4];
+                    address = row[5];
+                    seller_name = row[6];
+                    seller_phone = row[7];
+                    expert_name = row[8];
+                    expert_phone = row[9];
+                    meeting_date = row[10];
+                    meeting_time = row[11];
+                    full_address = row[5] + ", " + row[4];
+                    sent_before = row[12];
                     sent = 'Y';
                     // address = now.getTime();
                     // console.log(now.getTime());
@@ -146,10 +172,26 @@ app.get('/', (req, res) => {
 
 io.on('connection', function (socket) {
     // console.log(dateFormat(now, "HH:MM"));
-    socket.emit('change_address', {
-        address: address,
-        sent: sent
-    });
+    if(sent_before != 'Y'){
+        socket.emit('change_address', {
+            full_address: full_address,
+            sent: sent,
+            index: index,
+            id: id, 
+            date: date, 
+            seller: seller,
+            city: city, 
+            address: address,
+            seller_name: seller_name,
+            seller_phone: seller_phone,
+            expert_name: expert_name,
+            expert_phone: expert_phone,
+            meeting_date: meeting_date,
+            meeting_time: meeting_time
+        });
+    } else {
+        // do nothing if already sent
+    }
 });
 
 server.listen(port, () => {
