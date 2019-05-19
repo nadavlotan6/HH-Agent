@@ -170,7 +170,7 @@ app.get('/', (req, res) => {
 
 app.get('/:address', (req, res) => {
     full_address = req.params.address;
-    // full_address.replace("•", "%20");
+    full_address.replace("_", "%20");
     res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
