@@ -19,8 +19,9 @@ let now = new Date();
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
 let address = '';
+let sent = 'N';
 let spreadsheetId = '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU';
-let range = 'Format!A:K';
+let range = 'Format!A:M';
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -102,7 +103,7 @@ function listMajors(auth) {
     });
     sheets.spreadsheets.values.get({
         spreadsheetId: '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU',
-        range: 'Format!A:K',
+        range: 'Format!A:L',
     }, (err, res) => {
         if (err) return console.log('The API returned an error: ' + err);
         const rows = res.data.values;
@@ -110,9 +111,12 @@ function listMajors(auth) {
             console.log('ID, Address:');
             // Print columns A and E, which correspond to indices 0 and 4.
             rows.map((row) => {
-                if (row[9] == dateFormat(now, "dd/mm/yyyy") && (row[10] >= dateFormat(twoHoursEarlier, "HH:MM") && row[10] <= dateFormat(twoHoursAhead, "HH:MM"))) {
+                // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
+                // console.log(row[10] + ", " + row[11]);
+                if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}`);
-                    address = row[4] + ", " + row[3];
+                    address = row[5] + ", " + row[4];
+                    sent = 'Y';
                     // address = now.getTime();
                     // console.log(now.getTime());
                 }
@@ -141,9 +145,10 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    console.log(dateFormat(now, "HH:MM"));
+    // console.log(dateFormat(now, "HH:MM"));
     socket.emit('change_address', {
-        address: address
+        address: address,
+        sent: sent
     });
 });
 

@@ -15,6 +15,7 @@
       var socket = io();
       socket.on('change_address', function (data) {
         document.getElementById('address').value = data.address;
+        document.getElementById('sent').value = data.sent;
       });
     });
   </script>
@@ -42,6 +43,7 @@
         <!-- <h2 id="address">שנקר 3, הרצליה</h2> -->
         <input class=addressInput readonly="readonly" id="address" name="address" type="text"
           value="שנקר 3, הרצליה"><br>
+        <input id="sent" name="sent" type="text" hidden="hidden" value="N">
       </div>
 
       <div>
