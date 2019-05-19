@@ -34,25 +34,21 @@
   </div>
   <div class=formDiv>
     <form name="submit-to-google-sheet" align=center dir="rtl" onSubmit="alert('הטופס נשלח בהצלחה! \n תודה רבה! :)');">
-      <!-- <div>
-        <h1 class=heading>Marketing Automation - Seller Form</h1>
-      </div> -->
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
-        <!-- <h2 id="address">שנקר 3, הרצליה</h2> -->
         <input class=addressInput readonly="readonly" id="address" name="address" type="text"
           value="שנקר 3, הרצליה"><br>
         <input id="sent" name="sent" type="text" hidden="hidden" value="N">
       </div>
 
-      <div>
+      <div class=meetingDiv>
         <h3>הפגישה התקיימה?</h3>
         <input name="meeting_completed" type="radio" value="completed" required> פגישה התקיימה <br>
         <input name="meeting_completed" type="radio" value="not completed"> לא התקיימה <br>
       </div>
 
-      <div>
+      <div class=exclusivityDiv>
         <h3>נחתמה בלעדיות?</h3>
         <input name="exclusivity_signed" type="radio" value="signed" required> נחתמה בלעדיות <br>
         <input name="exclusivity_signed" type="radio" value="not signed"> לא נחתמה <br>
