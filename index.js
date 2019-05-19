@@ -171,17 +171,16 @@ app.get('/', (req, res) => {
 app.get('/:address', (req, res) => {
     full_address = req.params.address;
     // console.log(full_address);
-    full_address = full_address.replace(/_/g, "%20");
+    
+    var regex = /_/gi;
+    full_address = full_address.replace(regex, "%20");
     console.log(full_address);
-
     res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
         authorize(JSON.parse(content), listMajors);
     });
-    full_address = req.params.address;
-    console.log(full_address);
     res.sendFile(dir + '/index.html');
 });
 
