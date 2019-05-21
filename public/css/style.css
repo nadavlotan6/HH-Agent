@@ -68,7 +68,8 @@ input[type='radio']:checked:after {
 }
 
 .meetingDiv,
-.exclusivityDiv {
+.exclusivityDiv,
+.undecidedDiv {
     font-size: 20px;
 }
 
