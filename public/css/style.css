@@ -20,6 +20,18 @@
     align-self: center;
     padding: 5px;
 }
+/* .h1, .h2, .h3, h1, h2, h3,
+.divheader {
+    margin-top: 4px;
+    margin-bottom: 5px;
+    margin-block-start: 4px;
+    margin-block-end: 5px; 
+} */
+
+.h3{
+    padding: 0px;
+    margin: 0px;
+}
 
 .logoImg {
     display: block;
