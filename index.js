@@ -138,8 +138,8 @@ function listMajors(auth) {
                     seller_phone = row[7];
                     expert_name = row[8];
                     expert_phone = row[9];
-                    meeting_date = row[10];
-                    meeting_time = row[11];
+                    meeting_date = row[11];
+                    meeting_time = row[12];
                     // full_address = row[5] + "," + row[4];
                     sent_before = row[12];
                     sent = 'Y';
