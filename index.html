@@ -32,6 +32,16 @@
     });
   </script>
 
+  <script>
+    function showUndecided(){
+      document.getElementById('undecidedDiv').style.display = 'block';
+    }
+
+    function dontShowUndecided(){
+      document.getElementById('undecidedDiv').style.display ='none';
+    }
+  </script>
+
   <script type="text/javascript">
     function onRefresh() {
       socket.emit('refresh_page');
@@ -74,11 +84,11 @@
 
       <div class=exclusivityDiv>
         <h3 style="margin: 5px;" class=divheader>נחתמה בלעדיות?</h3>
-        <input name="signed" type="radio" value="1" required> כן <br>
-        <input name="signed" type="radio" value="0"> לא 
+        <input name="signed" type="radio" value="1" onclick="dontShowUndecided();" required> כן <br>
+        <input name="signed" type="radio" value="0" onclick="showUndecided();"> לא 
       </div>
 
-      <div class=undecidedDiv>
+      <div id=undecidedDiv class=undecidedDiv style="display: none">
         <h3 style="margin: 5px;" class=divheader>המוכר מתלבט?</h3>
         <input name="undecided" type="radio" value="1" required> כן <br>
         <input name="undecided" type="radio" value="0"> לא 

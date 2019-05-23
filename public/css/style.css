@@ -15,11 +15,16 @@
     font-weight: bold
 }
 
+.hide {
+    display: none;
+}
+
 .imgDiv {
     width: 100%;
     align-self: center;
     padding: 5px;
 }
+
 /* .h1, .h2, .h3, h1, h2, h3,
 .divheader {
     margin-top: 4px;
@@ -28,7 +33,7 @@
     margin-block-end: 5px; 
 } */
 
-.h3{
+.h3 {
     padding: 0px;
     margin: 0px;
 }
@@ -84,6 +89,10 @@ input[type='radio']:checked:after {
 .undecidedDiv {
     font-size: 20px;
 }
+
+/* .notesDiv {
+
+} */
 
 .commentsTextField {
     text-align: center;
