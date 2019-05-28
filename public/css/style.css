@@ -1,4 +1,10 @@
+@font-face {
+    font-family: "almoni-tzar";
+    src: url("fonts/almoni-tzar-aaa-400.woff") format('woff');
+}
+
 .button {
+    font-family: "almoni-tzar";
     background-color: #70CBB3;
     border: none;
     color: white;
@@ -12,6 +18,7 @@
 }
 
 .heading {
+    font-family: "almoni-tzar";
     font-weight: bold
 }
 
@@ -20,6 +27,7 @@
 }
 
 .imgDiv {
+    font-family: "almoni-tzar";
     width: 100%;
     align-self: center;
     padding: 5px;
@@ -34,11 +42,13 @@
 } */
 
 .h3 {
+    font-family: "almoni-tzar";
     padding: 0px;
     margin: 0px;
 }
 
 .logoImg {
+    font-family: "almoni-tzar";
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -48,6 +58,7 @@
 }
 
 .formDiv {
+    font-family: "almoni-tzar";
     width: 100%;
     align-content: center;
     align-self: center;
@@ -57,6 +68,7 @@
 }
 
 input[type='radio']:after {
+    font-family: "almoni-tzar";
     width: 15px;
     height: 15px;
     border-radius: 15px;
@@ -71,6 +83,7 @@ input[type='radio']:after {
 }
 
 input[type='radio']:checked:after {
+    font-family: "almoni-tzar";
     width: 15px;
     height: 15px;
     border-radius: 15px;
@@ -87,6 +100,7 @@ input[type='radio']:checked:after {
 .meetingDiv,
 .exclusivityDiv,
 .undecidedDiv {
+    font-family: "almoni-tzar";
     font-size: 20px;
 }
 
@@ -95,6 +109,7 @@ input[type='radio']:checked:after {
 } */
 
 .commentsTextField {
+    font-family: "almoni-tzar";
     text-align: center;
     font-size: 14px;
     width: 74%;
@@ -102,6 +117,7 @@ input[type='radio']:checked:after {
 }
 
 .addressInput {
+    font-family: "almoni-tzar";
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -112,5 +128,6 @@ input[type='radio']:checked:after {
 h1,
 h2,
 h3 {
+    font-family: "almoni-tzar";
     color: #1D3136;
 }
