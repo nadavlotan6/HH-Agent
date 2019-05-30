@@ -40,6 +40,11 @@
     function dontShowUndecided(){
       document.getElementById('undecidedDiv').style.display ='none';
     }
+
+    function redirect() {
+      window.location.replace("https://www.homehero.co.il/");
+      return false;
+    }
   </script>
 
   <script type="text/javascript">
@@ -55,7 +60,7 @@
     <img class=logoImg src="https://www.homehero.co.il/assets/images/headerlogo.svg">
   </div>
   <div class=formDiv>
-    <form name="submit-to-google-sheet" align=center dir="rtl" onSubmit="alert('הטופס נשלח בהצלחה! \n תודה רבה! :)');">
+    <form name="submit-to-google-sheet" align=center dir="rtl" onsubmit="return redirect()">
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
