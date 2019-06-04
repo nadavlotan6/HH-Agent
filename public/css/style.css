@@ -99,8 +99,7 @@ input[type='radio']:checked:after {
 
 .meetingDiv,
 .exclusivityDiv,
-.undecidedDiv,
-.dontSendDiv {
+.undecidedDiv {
     font-family: "almoni-tzar";
     font-size: 20px;
 }
