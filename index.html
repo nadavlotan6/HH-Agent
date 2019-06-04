@@ -35,12 +35,24 @@
   <script>
     function showUndecided(){
       document.getElementById('undecidedDiv').style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight);
     }
 
     function dontShowUndecided(){
-      document.getElementById('undecidedDiv').style.display ='none';
+      // document.getElementById('undecidedDiv').style.display ='none';
+      window.scrollTo(0, document.body.scrollHeight);
     }
 
+    // function showDontSend(){
+    //   document.getElementById('dontSendDiv').style.display = 'block';
+    //   window.scrollTo(0, document.body.scrollHeight);
+    // }
+    
+    // function dontShowDontSend(){
+    //   document.getElementById('dontSendDiv').style.display ='none';
+    //   window.scrollTo(0, document.body.scrollHeight);
+    // }
+    
     function redirect() {
       window.location.replace("https://www.homehero.co.il/");
       return false;
@@ -93,14 +105,22 @@
         <input name="signed" type="radio" value="0" onclick="showUndecided();"> לא 
       </div>
 
-      <div id=undecidedDiv class=undecidedDiv style="display: none">
-        <h3 style="margin: 5px;" class=divheader>המוכר מתלבט?</h3>
-        <input name="undecided" type="radio" value="1"> כן <br>
+      <!-- <div id=dontSendDiv class=dontSendDiv>
+        <h3 style="margin: 5px;" class=divheader>האם לשלוח הודעות ללקוח?</h3>
+        <input name="dontSend" type="radio" value="1" required> כן <br>
+        <input name="dontSend" type="radio" value="0"> לא 
+      </div> -->
+
+      <!-- <div id=undecidedDiv class=undecidedDiv style="display: none"> -->
+      <div id=undecidedDiv class=undecidedDiv>
+        <h3 style="margin: 5px;" class=divheader>האם לשלוח הודעות ללקוח?</h3>
+        <input name="undecided" type="radio" value="1" required> כן <br>
         <input name="undecided" type="radio" value="0"> לא 
       </div>
 
       <div>
         <h3 style="margin: 5px;" id=divheader>הערות:</h3>
+        <h5 style="margin: 5px;" id=divheader>הערות אלו ישמשו לצרכי מעקב בלבד ולא ישפיעו על התוכן שיישלח ללקוח.</h5>
         <input id="txtInput" class="commentsTextField" name="reason" type="textarea"
           placeholder="כתוב את סיבת ההתנגדות\הערות במידה ויש"><br><br>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>

@@ -18,21 +18,21 @@ let now = new Date();
 // console.log(dateFormat(now, "HH:MM"));
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
-let full_address = '';
-let sent = 'N';
-let index
-let id = ".";
-let date = ".";
-let seller = ".";
-let city = ".";
-let address = ".";
-let seller_name = ".";
-let seller_phone = ".";
-let expert_name = ".";
-let expert_phone = ".";
-let meeting_date = ".";
-let meeting_time = ".";
-let sent_before = "";
+global.full_address = '';
+global.sent = 'N';
+global.index
+global.id = ".";
+global.date = ".";
+global.seller = ".";
+global.city = ".";
+global.address = ".";
+global.seller_name = ".";
+global.seller_phone = ".";
+global.expert_name = ".";
+global.expert_phone = ".";
+global.meeting_date = ".";
+global.meeting_time = ".";
+global.sent_before = "";
 let spreadsheetId = '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU';
 let range = 'Format!A:M';
 
@@ -176,6 +176,7 @@ app.get('/:address', (req, res) => {
     full_address = full_address.replace(regex, " ");
     console.log(full_address);
     res.sendFile(dir + '/index.html');
+    // res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
@@ -185,7 +186,12 @@ app.get('/:address', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    if (sent_before != 'Y') {
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Sheets API.
+        authorize(JSON.parse(content), listMajors);
+    });
+    // if (sent_before != 'Y') {
         socket.emit('change_address', {
             full_address: full_address,
             sent: sent,
@@ -202,9 +208,9 @@ io.on('connection', function (socket) {
             meeting_date: meeting_date,
             meeting_time: meeting_time
         });
-    } else {
-        // do nothing if already sent
-    }
+    // } else {
+    //     // do nothing if already sent
+    // }
 });
 
 server.listen(port, () => {
