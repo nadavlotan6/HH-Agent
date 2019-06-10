@@ -194,6 +194,7 @@ io.on('connection', function (socket) {
     //     authorize(JSON.parse(content), listMajors);
     // });
     // if (sent_before != 'Y') {
+        console.log("Socket connection occured!");
         socket.emit('change_address', {
             full_address: full_address,
             sent: sent,
