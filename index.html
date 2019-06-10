@@ -5,6 +5,47 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="/socket.io/socket.io.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.15/autosize.min.js'></script>
+<script>
+  // Automatically size all of your <textarea> elements as you type
+  autosize(document.querySelectorAll('textarea'));
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  const prefix = "https://spreadsheets.google.com/feeds/list/";
+  const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
+  const postfix = "/od6/public/values?alt=json"
+
+  const spreadsheetURL = prefix + sheetID + postfix;
+  // $(document).ready(function () {
+  $.getJSON(spreadsheetURL, function (data) {
+    console.log(data)
+  });
+  // }
+</script>
+
+<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
+  // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  alert("submit to google sheet done")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 <head>
   <title>MA Seller</title>
@@ -150,46 +191,6 @@
       location.href = "www.homehero.co.il";
     };
   </script> -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.15/autosize.min.js'></script>
-  <script>
-    // Automatically size all of your <textarea> elements as you type
-    autosize(document.querySelectorAll('textarea'));
-  </script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>
-    const prefix = "https://spreadsheets.google.com/feeds/list/";
-    const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
-    const postfix = "/od6/public/values?alt=json"
-
-    const spreadsheetURL = prefix + sheetID + postfix;
-    // $(document).ready(function () {
-    $.getJSON(spreadsheetURL, function (data) {
-      console.log(data)
-    });
-    // }
-  </script>
-
-  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
-  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
-
-  <script>
-    // const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
-    const form = document.forms['submit-to-google-sheet']
-
-    alert("submit to google sheet done")
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
 
 </body>
