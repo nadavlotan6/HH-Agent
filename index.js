@@ -178,7 +178,7 @@ app.get('/:address', (req, res) => {
     full_address = full_address.replace(regex, " ");
     console.log(full_address);
     // res.sendFile(dir + '/index.html');
-    // res.sendFile(dir + '/index.html');
+    res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
@@ -194,23 +194,23 @@ io.on('connection', function (socket) {
     //     authorize(JSON.parse(content), listMajors);
     // });
     // if (sent_before != 'Y') {
-        console.log("Socket connection occured!");
-        socket.emit('change_address', {
-            full_address: full_address,
-            sent: sent,
-            index: index,
-            id: id,
-            date: date,
-            seller: seller,
-            city: city,
-            address: address,
-            seller_name: seller_name,
-            seller_phone: seller_phone,
-            expert_name: expert_name,
-            expert_phone: expert_phone,
-            meeting_date: meeting_date,
-            meeting_time: meeting_time
-        });
+    console.log("Socket connection occured!");
+    socket.emit('change_address', {
+        full_address: full_address,
+        sent: sent,
+        index: index,
+        id: id,
+        date: date,
+        seller: seller,
+        city: city,
+        address: address,
+        seller_name: seller_name,
+        seller_phone: seller_phone,
+        expert_name: expert_name,
+        expert_phone: expert_phone,
+        meeting_date: meeting_date,
+        meeting_time: meeting_time
+    });
     // } else {
     //     // do nothing if already sent
     // }
