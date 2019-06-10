@@ -12,15 +12,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <!-- <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script> -->
   <script>
-    if (document.readyState !== "loading") {
-      onReady(); // Or setTimeout(onReady, 0); if you want it consistently async
-    } else {
-      document.addEventListener("DOMContentLoaded", onReady);
-    }
-    function onReady () {
-     alert(
-       "onReady launched"
-     )
+    // if (document.readyState !== "loading") {
+    //   onReady(); // Or setTimeout(onReady, 0); if you want it consistently async
+    // } else {
+    //   document.addEventListener("DOMContentLoaded", onReady);
+    // }
+    // function onReady () {
+    //  alert(
+    //    "onReady launched"
+    //  )
       var socket = io();
       socket.on('change_address', function (data) {
         document.getElementById('full_address').value = data.full_address;
