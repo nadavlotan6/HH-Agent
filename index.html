@@ -77,40 +77,7 @@
     }
   </script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>
-    const prefix = "https://spreadsheets.google.com/feeds/list/";
-    const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
-    const postfix = "/od6/public/values?alt=json"
 
-    const spreadsheetURL = prefix + sheetID + postfix;
-
-    $.getJSON(spreadsheetURL, function (data) {
-      console.log(data)
-    });
-  </script>
-
-  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
-  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
-
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
-    // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
-    const form = document.forms['submit-to-google-sheet']
-
-    alert("submit to google sheet done")
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
 
   <script type="text/javascript">
     function onRefresh() {
@@ -186,7 +153,40 @@
   </div>
 
 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    const prefix = "https://spreadsheets.google.com/feeds/list/";
+    const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
+    const postfix = "/od6/public/values?alt=json"
 
+    const spreadsheetURL = prefix + sheetID + postfix;
+
+    $.getJSON(spreadsheetURL, function (data) {
+      console.log(data)
+    });
+  </script>
+
+  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
+    // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    alert("submit to google sheet done")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
   <!-- <script type="text/javascript">
     document.getElementById("submitButton").onclick = function () {
