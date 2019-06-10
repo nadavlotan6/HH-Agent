@@ -12,8 +12,13 @@
   <!-- <script src="/socket.io/socket.io.js"></script> -->
   <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var socket = io.connect('https://herohero-ma.herokuapp.com');
+    if (document.readyState !== "loading") {
+      onReady(); // Or setTimeout(onReady, 0); if you want it consistently async
+    } else {
+      document.addEventListener("DOMContentLoaded", onReady);
+    }
+    function onReady () {
+      var socket = io();
       socket.on('change_address', function (data) {
         document.getElementById('full_address').value = data.full_address;
         document.getElementById('sent').value = data.sent;
@@ -30,16 +35,16 @@
         document.getElementById('meeting_date').value = data.meeting_date;
         document.getElementById('meeting_time').value = data.meeting_time;
       });
-    });
+    };
   </script>
 
   <script>
-    function showUndecided(){
+    function showUndecided() {
       document.getElementById('undecidedDiv').style.display = 'block';
       window.scrollTo(0, document.body.scrollHeight);
     }
 
-    function dontShowUndecided(){
+    function dontShowUndecided() {
       // document.getElementById('undecidedDiv').style.display ='none';
       window.scrollTo(0, document.body.scrollHeight);
     }
@@ -48,12 +53,12 @@
     //   document.getElementById('dontSendDiv').style.display = 'block';
     //   window.scrollTo(0, document.body.scrollHeight);
     // }
-    
+
     // function dontShowDontSend(){
     //   document.getElementById('dontSendDiv').style.display ='none';
     //   window.scrollTo(0, document.body.scrollHeight);
     // }
-    
+
     function redirect() {
       window.location.replace("https://www.homehero.co.il/");
       return false;
@@ -97,13 +102,13 @@
       <div class=meetingDiv>
         <h3 style="margin: 5px;">הפגישה התקיימה?</h3>
         <input name="happened" type="radio" value="1" required> כן <br>
-        <input name="happened" type="radio" value="0"> לא 
+        <input name="happened" type="radio" value="0"> לא
       </div>
 
       <div class=exclusivityDiv>
         <h3 style="margin: 5px;" class=divheader>נחתמה בלעדיות?</h3>
         <input name="signed" type="radio" value="1" onclick="dontShowUndecided();" required> כן <br>
-        <input name="signed" type="radio" value="0" onclick="showUndecided();"> לא 
+        <input name="signed" type="radio" value="0" onclick="showUndecided();"> לא
       </div>
 
       <!-- <div id=dontSendDiv class=dontSendDiv>
@@ -116,7 +121,7 @@
       <div id=undecidedDiv class=undecidedDiv>
         <h3 style="margin: 5px;" class=divheader>האם לשלוח הודעות ללקוח?</h3>
         <input name="undecided" type="radio" value="1" required> כן <br>
-        <input name="undecided" type="radio" value="0"> לא 
+        <input name="undecided" type="radio" value="0"> לא
       </div>
 
       <div>
