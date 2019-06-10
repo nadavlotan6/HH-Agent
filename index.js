@@ -188,11 +188,11 @@ app.get('/:address', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    // fs.readFile('credentials.json', (err, content) => {
-    //     if (err) return console.log('Error loading client secret file:', err);
-    //     // Authorize a client with credentials, then call the Google Sheets API.
-    //     authorize(JSON.parse(content), listMajors);
-    // });
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Sheets API.
+        authorize(JSON.parse(content), listMajors);
+    });
     // if (sent_before != 'Y') {
     console.log("Socket connection occured!");
     socket.emit('change_address', {
