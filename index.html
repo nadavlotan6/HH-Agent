@@ -9,10 +9,11 @@
   <link rel="icon" href="https://www.homehero.co.il/assets/images/favicon/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="/socket.io/socket.io.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var socket = io();
+      var socket = io.connect('https://herohero-ma.herokuapp.com');
       socket.on('change_address', function (data) {
         document.getElementById('full_address').value = data.full_address;
         document.getElementById('sent').value = data.sent;
