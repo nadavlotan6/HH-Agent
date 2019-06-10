@@ -20,7 +20,7 @@ let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
 global.full_address = '';
 global.sent = 'N';
-global.index
+global.index = '';
 global.id = ".";
 global.date = ".";
 global.seller = ".";
