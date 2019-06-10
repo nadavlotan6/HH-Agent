@@ -177,34 +177,19 @@
   <script>
     // const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
     const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
+    const form = document.forms['submit-to-google-sheet']
 
-    var $form = $('form#test-form'),
-      url = 'https://script.google.com/macros/s/abcdefghijklmnopqrstuvwxyz1234567890/exec'
+    alert("submit to google sheet done")
 
-    $('#submit-form').on('click', function (e) {
-      e.preventDefault();
-      var jqxhr = $.ajax({
-        url: url,
-        method: "GET",
-        dataType: "json",
-        data: $form.serializeObject()
-      }).success(
-        // do something
-      );
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
     })
-    // const form = document.forms['submit-to-google-sheet']
-
-    // alert("submit to google sheet done")
-
-    // form.addEventListener('submit', e => {
-    //   e.preventDefault()
-    //   fetch(scriptURL, {
-    //       method: 'POST',
-    //       body: new FormData(form)
-    //     })
-    //     .then(response => console.log('Success!', response))
-    //     .catch(error => console.error('Error!', error.message))
-    // })
   </script>
 
 </body>
