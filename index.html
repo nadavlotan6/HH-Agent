@@ -18,6 +18,9 @@
       document.addEventListener("DOMContentLoaded", onReady);
     }
     function onReady () {
+     alert(
+       "onReady launched"
+     )
       var socket = io();
       socket.on('change_address', function (data) {
         document.getElementById('full_address').value = data.full_address;
