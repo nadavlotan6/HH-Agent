@@ -158,15 +158,15 @@ function listMajors(auth) {
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.sendFile(dir + '/index.html');
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Sheets API.
-        authorize(JSON.parse(content), listMajors);
-    });
-    res.sendFile(dir + '/index.html');
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(dir + '/index.html');
+//     fs.readFile('credentials.json', (err, content) => {
+//         if (err) return console.log('Error loading client secret file:', err);
+//         // Authorize a client with credentials, then call the Google Sheets API.
+//         authorize(JSON.parse(content), listMajors);
+//     });
+//     res.sendFile(dir + '/index.html');
+// });
 
 app.get('/:address', (req, res) => {
     full_address = req.params.address;
@@ -175,7 +175,7 @@ app.get('/:address', (req, res) => {
     var regex = /_/gi;
     full_address = full_address.replace(regex, " ");
     console.log(full_address);
-    res.sendFile(dir + '/index.html');
+    // res.sendFile(dir + '/index.html');
     // res.sendFile(dir + '/index.html');
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
