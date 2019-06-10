@@ -118,6 +118,7 @@ function listMajors(auth) {
         spreadsheetId: '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU',
         range: 'Format!A:M',
     }, (err, res) => {
+        console.log("Get occured");
         if (err) return console.log('The API returned an error: ' + err);
         const rows = res.data.values;
         if (rows.length) {
@@ -186,11 +187,11 @@ app.get('/:address', (req, res) => {
 });
 
 io.on('connection', function (socket) {
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Sheets API.
-        authorize(JSON.parse(content), listMajors);
-    });
+    // fs.readFile('credentials.json', (err, content) => {
+    //     if (err) return console.log('Error loading client secret file:', err);
+    //     // Authorize a client with credentials, then call the Google Sheets API.
+    //     authorize(JSON.parse(content), listMajors);
+    // });
     // if (sent_before != 'Y') {
         socket.emit('change_address', {
             full_address: full_address,
