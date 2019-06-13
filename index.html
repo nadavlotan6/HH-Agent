@@ -90,7 +90,7 @@
     <img class=logoImg src="https://www.homehero.co.il/assets/images/headerlogo.svg">
   </div>
   <div class=formDiv>
-    <form name="submit-to-google-sheet" align=center dir="rtl" onsubmit="return redirect()">
+    <form name="submit-to-google-sheet" align=center dir="rtl" >
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
@@ -162,6 +162,8 @@
           .then(response => console.log('Success!', response))
           .catch(error => console.error('Error!', error.message))
       })
+
+      redirect();
     </script>
   </div>
 
