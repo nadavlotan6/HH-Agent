@@ -67,11 +67,7 @@
     // }
 
     function redirect() {
-      for (let i=1 ; i<10000 ; i++) {
-        //
-      }
-      // window.location.replace("https://www.homehero.co.il/");
-      alert("הטופס נשלח בהצלחה")
+      alert("הטופס נשלח בהצלחה! \n בהצלחה בהמשך 👍🏼")
       return true;
     }
   </script>
@@ -91,7 +87,7 @@
     <img class=logoImg src="https://www.homehero.co.il/assets/images/headerlogo.svg">
   </div>
   <div class=formDiv>
-    <form name="submit-to-google-sheet" align=center dir="rtl" >
+    <form name="submit-to-google-sheet" align=center dir="rtl">
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
@@ -162,9 +158,8 @@
           })
           .then(response => console.log('Success!', response))
           .catch(error => console.error('Error!', error.message))
-          redirect();
+        redirect();
       })
-
     </script>
   </div>
 
