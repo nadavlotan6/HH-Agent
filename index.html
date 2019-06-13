@@ -5,12 +5,6 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="/socket.io/socket.io.js"></script>
-<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.15/autosize.min.js'></script>
-<script>
-  // Automatically size all of your <textarea> elements as you type
-  autosize(document.querySelectorAll('textarea'));
-</script> -->
-
 
 
 <head>
@@ -30,6 +24,7 @@
     //    "onReady launched"
     //  )
     var socket = io();
+    // socket.emit(get_data);
     socket.on('change_address', function (data) {
       document.getElementById('full_address').value = data.full_address;
       document.getElementById('sent').value = data.sent;
@@ -72,8 +67,8 @@
     // }
 
     function redirect() {
-      window.location.replace("https://www.homehero.co.il/");
-      return false;
+      // window.location.replace("https://www.homehero.co.il/");
+      return true;
     }
   </script>
 
@@ -92,12 +87,11 @@
     <img class=logoImg src="https://www.homehero.co.il/assets/images/headerlogo.svg">
   </div>
   <div class=formDiv>
-    <form name="submit-to-google-sheet" align=center dir="rtl" onsubmit="return redirect()">
+    <form name="submit-to-google-sheet" align=center dir="rtl">
 
       <div>
         <h1 style="margin-top:2px"> פגישת מוכר בכתובת: </h1>
-        <input class=addressInput readonly="readonly" id="full_address" name="full_address" type="text"
-          value="שנקר 3, הרצליה"><br>
+        <input class=addressInput readonly="readonly" id="full_address" name="full_address" type="text" value=""><br>
         <input id="sent" name="sent" type="text" hidden="hidden" value="N">
         <input id="index" name="index" type="text" hidden="hidden" value=".">
         <input id="id" name="id" type="text" hidden="hidden" value=".">
@@ -147,9 +141,25 @@
       </div>
 
       <button id="submitButton" class="button" type="submit"> שלח טופס </button>
-      <!-- <button onclick="location.href = 'www.google.com';" id="submitButton" class="button" type="submit">שלח   -->
-
     </form>
+
+    <script>
+      const scriptURL =
+        'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
+      // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
+      const form = document.forms["submit-to-google-sheet"]
+
+      form.addEventListener('submit', e => {
+        console.log("submit occured")
+        e.preventDefault()
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form)
+          })
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
   </div>
 
 
@@ -169,30 +179,4 @@
   <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
   <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
   <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
-
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
-    // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
-    const form = document.forms['submit-to-google-sheet']
-
-    alert("submit to google sheet done")
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
-
-  <!-- <script type="text/javascript">
-    document.getElementById("submitButton").onclick = function () {
-      location.href = "www.homehero.co.il";
-    };
-  </script> -->
-
-
 </body>
