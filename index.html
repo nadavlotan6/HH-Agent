@@ -12,19 +12,10 @@
   <link rel="icon" href="https://www.homehero.co.il/assets/images/favicon/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <!-- <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script> -->
+
   <script>
-    // if (document.readyState !== "loading") {
-    //   onReady(); // Or setTimeout(onReady, 0); if you want it consistently async
-    // } else {
-    //   document.addEventListener("DOMContentLoaded", onReady);
-    // }
-    // function onReady () {
-    //  alert(
-    //    "onReady launched"
-    //  )
     var socket = io();
-    // socket.emit(get_data);
+
     socket.on('change_address', function (data) {
       document.getElementById('full_address').value = data.full_address;
       document.getElementById('sent').value = data.sent;
@@ -41,10 +32,8 @@
       document.getElementById('meeting_date').value = data.meeting_date;
       document.getElementById('meeting_time').value = data.meeting_time;
     });
-    // };
-  </script>
 
-  <script>
+
     function showUndecided() {
       document.getElementById('undecidedDiv').style.display = 'block';
       window.scrollTo(0, document.body.scrollHeight);
@@ -74,12 +63,12 @@
 
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     function onRefresh() {
       socket.emit('refresh_page');
     }
     window.onbeforeunload = onRefresh;
-  </script>
+  </script> -->
 </head>
 
 <body>
