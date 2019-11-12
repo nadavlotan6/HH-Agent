@@ -15,7 +15,7 @@
 
   <script>
     var socket = io();
-
+    
     socket.on('change_address', function (data) {
       document.getElementById('full_address').value = data.full_address;
       document.getElementById('sent').value = data.sent;
@@ -33,27 +33,14 @@
       document.getElementById('meeting_time').value = data.meeting_time;
     });
 
-
     function showUndecided() {
       document.getElementById('undecidedDiv').style.display = 'block';
       window.scrollTo(0, document.body.scrollHeight);
     }
 
     function dontShowUndecided() {
-      // document.getElementById('undecidedDiv').style.display ='none';
       window.scrollTo(0, document.body.scrollHeight);
     }
-
-
-    // function showDontSend(){
-    //   document.getElementById('dontSendDiv').style.display = 'block';
-    //   window.scrollTo(0, document.body.scrollHeight);
-    // }
-
-    // function dontShowDontSend(){
-    //   document.getElementById('dontSendDiv').style.display ='none';
-    //   window.scrollTo(0, document.body.scrollHeight);
-    // }
 
     function redirect() {
       alert("הטופס נשלח בהצלחה! \n בהצלחה בהמשך 👍🏼")
@@ -99,17 +86,14 @@
         <input name="signed" type="radio" value="0" onclick="showUndecided();"> לא
       </div>
 
-      <!-- <div id=dontSendDiv class=dontSendDiv>
-        <h3 style="margin: 5px;" class=divheader>האם לשלוח הודעות ללקוח?</h3>
-        <input name="dontSend" type="radio" value="1" required> כן <br>
-        <input name="dontSend" type="radio" value="0"> לא 
-      </div> -->
-
-      <!-- <div id=undecidedDiv class=undecidedDiv style="display: none"> -->
       <div id=undecidedDiv class=undecidedDiv>
-        <h3 style="margin: 5px;" class=divheader>האם לשלוח הודעות ללקוח?</h3>
-        <input name="undecided" type="radio" value="1" required> כן <br>
-        <input name="undecided" type="radio" value="0"> לא
+        <h3 style="margin: 5px;" class=divheader>אטרקטיביות הדירה?</h3>
+        <h5 style="margin: 5px;" class=divheader>אנא דרג בציון שבין 1 ל-5 את מידת חשיבות הדירה עבור העברה, בהיבטים של תמחור, נכונות המוכר למכירה ועוד</h5>
+        <input name="apartmentAttractiveness" type="radio" value="5" required> ⭐️️️️️️⭐️️️️️️⭐️️️️️️⭐️️️️️️⭐️️️️️️ <br>
+        <input name="apartmentAttractiveness" type="radio" value="4" required> ⭐️️️️️️⭐️️️️️️⭐️️️️️️⭐️️️️️️ <br>
+        <input name="apartmentAttractiveness" type="radio" value="3" required> ⭐️️️️️️⭐️️️️️️⭐️️️️️️ <br>
+        <input name="apartmentAttractiveness" type="radio" value="2" required> ⭐️️️️️️⭐️️️️️️ <br>
+        <input name="apartmentAttractiveness" type="radio" value="1"> ⭐️️️️️️
       </div>
 
       <div>
@@ -126,7 +110,6 @@
     <script>
       const scriptURL =
         'https://script.google.com/macros/s/AKfycbxSQk4dd3d_CRfLm8DY1csvLPrIaUCTUlKZKOgTJr21oC_7ZPw/exec'
-      // const scriptURL = 'https://script.google.com/macros/s/AKfycbx3L9pMiMS_mCGQsAQDPovx6bV3D_jQKmUoguRDUjuJEYSQAs0/exec'
       const form = document.forms["submit-to-google-sheet"]
 
       form.addEventListener('submit', e => {
@@ -148,7 +131,7 @@
   <script>
     const prefix = "https://spreadsheets.google.com/feeds/list/";
     const sheetID = "1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU";
-    const postfix = "/od6/public/values?alt=json"
+    const postfix = "/od6/public/values?alt=json";
 
     const spreadsheetURL = prefix + sheetID + postfix;
 

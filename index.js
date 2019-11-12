@@ -11,11 +11,7 @@ const {
     google
 } = require('googleapis');
 const dateFormat = require('dateformat');
-// let serverTime = new Date().getTime()-3*60*60*1000;
-// console.log(dateFormat(serverTime, "HH:MM"));
 let now = new Date();
-// now.setHours(now.getHours + 3);
-// console.log(dateFormat(now, "HH:MM"));
 let twoHoursEarlier = now.getTime() - 2 * 60 * 60 * 1000;
 let twoHoursAhead = now.getTime() + (2 * 60 * 60 * 1000);
 global.full_address = '';
@@ -47,7 +43,7 @@ const TOKEN_PATH = 'token.json';
 fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Sheets API.
-    authorize(JSON.parse(content), listMajors);
+    authorize(JSON.parse(content), fetchData);
 });
 
 /**
@@ -105,15 +101,16 @@ function getNewToken(oAuth2Client, callback) {
 }
 
 /**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * Fetch the data from the relevant google sheet
+ * @see https://docs.google.com/spreadsheets/d/1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU/edit
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
-function listMajors(auth) {
+function fetchData(auth) {
     const sheets = google.sheets({
         version: 'v4',
         auth
     });
+    // set the google sheets details
     sheets.spreadsheets.values.get({
         spreadsheetId: '1I6ADcGlCqYTH7bQD9v19FLvNcbZUjCkUiq82sgQHlnU',
         range: 'Format!A:M',
@@ -121,13 +118,10 @@ function listMajors(auth) {
         console.log("Get occured");
         if (err) return console.log('The API returned an error: ' + err);
         const rows = res.data.values;
+        // if got at least on record
         if (rows.length) {
-            // console.log('ID, Address:');
+            // assign all values from the meeting to the form fields
             rows.map((row) => {
-                // console.log("rows.map((row) occured");
-                // console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]} `);
-                // console.log(row[10] + "," + row[11]);
-                // if (row[10] == dateFormat(now, "dd/mm/yyyy") && (row[11] >= dateFormat(twoHoursEarlier, "HH:MM") && row[11] <= dateFormat(twoHoursAhead, "HH:MM"))) {
                 if (row[5] + ", " + row[4] == full_address) {
                     console.log(`${row[0]}, ${row[1]}, ${row[2]}, ${row[3]}, ${row[4]}, ${row[5]}, ${row[6]} , ${row[7]}, ${row[8]} , ${row[9]}, ${row[10]}, ${row[11]}, ${row[12]}`);
                     index = row[0];
@@ -146,11 +140,6 @@ function listMajors(auth) {
                     sent_before = row[12];
                     sent = 'Y';
                 }
-                //   console.log(dateFormat(now, "isoDate"));
-                //   console.log(dateFormat(now, "dd/mm/yyyy"));
-                //   console.log(dateFormat(now, "HH:MM"));
-                //   console.log(dateFormat(twoHoursAhead, "HH:MM"));
-                //   console.log(dateFormat(twoHoursEarlier, "HH:MM"));
             });
         } else {
             console.log('No data found.');
@@ -160,16 +149,7 @@ function listMajors(auth) {
 
 app.use(express.static('public'));
 
-// app.get('/', (req, res) => {
-//     res.sendFile(dir + '/index.html');
-//     fs.readFile('credentials.json', (err, content) => {
-//         if (err) return console.log('Error loading client secret file:', err);
-//         // Authorize a client with credentials, then call the Google Sheets API.
-//         authorize(JSON.parse(content), listMajors);
-//     });
-//     res.sendFile(dir + '/index.html');
-// });
-
+// set handler for GET request with an address
 app.get('/:address', (req, res) => {
     full_address = req.params.address;
     // console.log(full_address);
@@ -180,42 +160,18 @@ app.get('/:address', (req, res) => {
     res.sendFile(dir + '/index.html');
     res.sendFile(dir + '/index.html');
 
-    // io.on('get_data', function (socket) {
-    //     socket.emit('change_address', {
-    //         full_address: full_address,
-    //         sent: sent,
-    //         index: index,
-    //         id: id,
-    //         date: date,
-    //         seller: seller,
-    //         city: city,
-    //         address: address,
-    //         seller_name: seller_name,
-    //         seller_phone: seller_phone,
-    //         expert_name: expert_name,
-    //         expert_phone: expert_phone,
-    //         meeting_date: meeting_date,
-    //         meeting_time: meeting_time
-    //     });
-    // });
-
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
-        authorize(JSON.parse(content), listMajors);
+        authorize(JSON.parse(content), fetchData);
     });
     res.sendFile(dir + '/index.html');
 });
 
+// On connection from html page
 io.on('connection', function (socket) {
-    // fs.readFile('credentials.json', (err, content) => {
-    //     if (err) return console.log('Error loading client secret file:', err);
-    //     // Authorize a client with credentials, then call the Google Sheets API.
-    //     authorize(JSON.parse(content), listMajors);
-    // });
-    // if (sent_before != 'Y') {
     console.log("Socket connection occured!");
-    // io.on('get_data', function (socket) {
+        // update the html form with the meeting details
         socket.emit('change_address', {
             full_address: full_address,
             sent: sent,
@@ -232,10 +188,6 @@ io.on('connection', function (socket) {
             meeting_date: meeting_date,
             meeting_time: meeting_time
         });
-    // });
-    // } else {
-    //     // do nothing if already sent
-    // }
 });
 
 server.listen(port, () => {
